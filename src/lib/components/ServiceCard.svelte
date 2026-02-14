@@ -1,23 +1,18 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
-
   interface Props {
+    number: string;
     title: string;
     description: string;
     features?: string[];
-    icon?: Snippet;
   }
 
-  let { title, description, features = [], icon }: Props = $props();
+  let { number, title, description, features = [] }: Props = $props();
 </script>
 
-<article class="service-card">
-  {#if icon}
-    <div class="icon-wrapper">
-      {@render icon()}
-    </div>
-  {/if}
+<article class="card">
+  <span class="card-number">{number}</span>
   <h3>{title}</h3>
+  <div class="card-rule"></div>
   <p>{description}</p>
   {#if features.length > 0}
     <ul class="features">
@@ -29,50 +24,65 @@
 </article>
 
 <style>
-  .service-card {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
     padding: 2rem;
     transition: all 0.3s ease;
+    position: relative;
   }
 
-  .service-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(79, 110, 247, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  .card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
-  .icon-wrapper {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    background: var(--accent-gradient-subtle);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    color: var(--accent-blue);
+  .card-number {
+    font-family: var(--font-mono);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.4;
+    line-height: 1;
+    display: block;
+    margin-bottom: 1.25rem;
   }
 
-  .icon-wrapper :global(svg) {
-    width: 28px;
-    height: 28px;
+  .card:hover .card-number {
+    opacity: 0.7;
   }
 
   h3 {
-    font-size: 1.35rem;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
     font-weight: 700;
     margin-bottom: 0.75rem;
     color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .card-rule {
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    transition: width 0.3s ease, opacity 0.3s ease;
+  }
+
+  .card:hover .card-rule {
+    width: 48px;
+    opacity: 0.8;
   }
 
   p {
     color: var(--text-secondary);
     line-height: 1.7;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-size: var(--text-sm);
   }
 
   .features {
@@ -85,17 +95,18 @@
   }
 
   .features li {
-    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
     color: var(--text-muted);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
-    padding: 0.35rem 0.75rem;
-    border-radius: 100px;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
     transition: all 0.2s ease;
+    letter-spacing: 0.02em;
   }
 
   .features li:hover {
-    color: var(--text-secondary);
-    border-color: rgba(79, 110, 247, 0.2);
+    color: var(--accent);
+    border-color: var(--border-accent);
   }
 </style>

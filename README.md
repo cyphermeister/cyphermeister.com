@@ -1,6 +1,6 @@
-# CypherMeister Website
+# Cyphermeister Website
 
-This is the [official website for CypherMeister LLC](https://cyphermeister.com),
+This is the [official website for Cyphermeister LLC](https://cyphermeister.com),
 a consulting firm specializing in distributed systems and cryptography protocols.
 
 ## Tech Stack

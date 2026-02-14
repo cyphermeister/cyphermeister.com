@@ -1,54 +1,71 @@
 <script lang="ts">
-  // Pure CSS animated background - no JS needed
+  // Refined background: dot grid pattern + subtle gradient accents
 </script>
 
-<div class="animated-bg" aria-hidden="true">
-  <div class="gradient-orb orb-1"></div>
-  <div class="gradient-orb orb-2"></div>
-  <div class="gradient-orb orb-3"></div>
+<div class="bg" aria-hidden="true">
+  <div class="grid-pattern"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
 </div>
 
 <style>
-  .animated-bg {
+  .bg {
     position: fixed;
     inset: 0;
-    overflow: hidden;
     z-index: -1;
     pointer-events: none;
+    overflow: hidden;
   }
 
-  .gradient-orb {
+  .grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+    background-size: 48px 48px;
+    mask-image: radial-gradient(
+      ellipse 80% 50% at 50% 30%,
+      black 20%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 50% at 50% 30%,
+      black 20%,
+      transparent 70%
+    );
+  }
+
+  .glow {
     position: absolute;
     border-radius: 50%;
     filter: blur(120px);
-    opacity: 0.4;
   }
 
-  .orb-1 {
-    width: 600px;
-    height: 600px;
-    background: var(--accent-blue);
-    top: -200px;
-    right: -100px;
-    animation: float 20s ease-in-out infinite;
-  }
-
-  .orb-2 {
+  .glow-1 {
     width: 500px;
     height: 500px;
-    background: var(--accent-purple);
-    bottom: 10%;
-    left: -150px;
-    animation: float 25s ease-in-out infinite reverse;
+    background: rgba(201, 168, 76, 0.035);
+    top: -10%;
+    right: 10%;
+    animation: drift 30s ease-in-out infinite;
   }
 
-  .orb-3 {
+  .glow-2 {
     width: 400px;
     height: 400px;
-    background: var(--accent-cyan);
-    top: 40%;
-    right: 20%;
-    animation: float 30s ease-in-out infinite;
-    opacity: 0.25;
+    background: rgba(90, 125, 154, 0.03);
+    bottom: 10%;
+    left: -5%;
+    animation: drift 25s ease-in-out infinite reverse;
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(20px, -30px); }
+    50% { transform: translate(-10px, 20px); }
+    75% { transform: translate(15px, 10px); }
   }
 </style>
