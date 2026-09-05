@@ -24,10 +24,10 @@
   }
 
   const navItems = [
-    { label: 'Services', href: '#services' },
-    { label: 'About', href: '#about' },
-    { label: 'Expertise', href: '#expertise' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'Services', href: '/#services' },
+    { label: 'About', href: '/#about' },
+    { label: 'Expertise', href: '/#expertise' },
+    { label: 'Contact', href: '/#contact' }
   ];
 </script>
 
@@ -44,7 +44,7 @@
       {/each}
     </ul>
 
-    <a href="#contact" class="nav-cta">Start a Project</a>
+    <a href="/#contact" class="nav-cta">Start a Project</a>
 
     <button
       class="hamburger"
@@ -76,7 +76,7 @@
       <li><a href={item.href} onclick={closeMobile}>{item.label}</a></li>
     {/each}
   </ul>
-  <a href="#contact" class="btn-primary drawer-cta" onclick={closeMobile}>
+  <a href="/#contact" class="btn-primary drawer-cta" onclick={closeMobile}>
     Start a Project
   </a>
 </aside>
