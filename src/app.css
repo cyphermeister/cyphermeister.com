@@ -237,3 +237,103 @@ section {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--bg-card-hover);
 }
+
+/* ═══════════════════════════
+   Legal documents
+   ═══════════════════════════ */
+.doc {
+  max-width: 72ch;
+  counter-reset: doc-section;
+}
+
+.doc .lead {
+  font-size: var(--text-lg);
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.doc .summary {
+  border: 1px solid var(--border-accent);
+  background: var(--accent-subtle);
+  border-radius: 4px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.doc .summary-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.doc .summary ul {
+  margin-bottom: 0;
+}
+
+.doc section {
+  margin-bottom: 3rem;
+  scroll-margin-top: 6rem;
+}
+
+.doc h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  font-size: var(--text-xl);
+  margin: 0 0 1rem;
+}
+
+.doc h2::before {
+  counter-increment: doc-section;
+  content: counter(doc-section, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.doc h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.doc p,
+.doc li,
+.doc address {
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.doc p {
+  margin-bottom: 1rem;
+}
+
+.doc ul,
+.doc ol {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.doc li {
+  margin-bottom: 0.5rem;
+}
+
+.doc li::marker {
+  color: var(--accent-dim);
+}
+
+.doc strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.doc address {
+  font-style: normal;
+}
